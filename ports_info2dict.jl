@@ -13,7 +13,7 @@ Nmap 7.80 ( https://nmap.org ) GNU GPL License.
 using EzXML
 
 # Data node struct.
-mutable struct node
+struct node
     port_id::Int
     protocol::String
     state::String
@@ -27,7 +27,12 @@ function nmapXML_2_dict(filename::String)
     :return: dictionary (key: port_id; value: node).
     """
 
+    # Define variables.
     dict = Dict()
+    tmp_port_id = 0
+    tmp_protocol = ""
+    tmp_state = ""
+    tmp_service = ""
 
     # Read a document from a file and set a root.
     file = joinpath(dirname(@__FILE__), filename)
@@ -40,17 +45,17 @@ function nmapXML_2_dict(filename::String)
                 if sub_tag.name == "ports"
                     for minor_tag in eachelement(sub_tag)
                         if minor_tag.name == "port"
-                            data = node(0, "", "", "")
-                            data.port_id = parse(Int, minor_tag["portid"])
-                            data.protocol = minor_tag["protocol"]
+                            tmp_port_id = parse(Int, minor_tag["portid"])
+                            tmp_protocol = minor_tag["protocol"]
                             for element in eachelement(minor_tag)
                                 if element.name == "state"
-                                    data.state = element["state"]
+                                    tmp_state = element["state"]
                                 end
                                 if element.name == "service"
-                                    data.service = element["name"]
+                                    tmp_service = element["name"]
                                 end
                             end
+                            data = node(tmp_port_id, tmp_protocol, tmp_state, tmp_service)
                             dict[data.port_id] = data
                         end   
                     end
