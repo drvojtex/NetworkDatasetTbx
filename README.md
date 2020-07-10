@@ -1,4 +1,4 @@
-# NetworkDatasetTBX
+# NetworkDatasetTbx
 
 ## ports_info2dict.jl
 Example of use ports_info2dict.jl. Domain name might be replaced by IP address. \
@@ -22,4 +22,18 @@ julia> dict[25].state
 "closed"
 julia> dict[25].service
 "smtp"
+```
+
+## dns2ip.jl
+By DNS returns IP address.
+Example:
+convert_dns2ip("fel.cvut.cz")
+
+Tested with:
+macOS Catalina v10.15.5.
+
+```julia
+julia> include("dns2ip.jl")
+julia> convert_dns2ip("cvut.cz")
+"147.32.3.202"
 ```
