@@ -69,9 +69,11 @@ function nmapXML_2_dict(filename::String)
 end
 
 function nmap(server::String)
+    originalSTDOUT = stdout;
     (outread, outwrite) = redirect_stdout()
     run(`nmap $(server) -oX tmp_$(server).xml`)
     output = nmapXML_2_dict("tmp_$(server).xml")
-    rm("tmp_$(server).xml")    
+    rm("tmp_$(server).xml")
+    redirect_stdout(originalSTDOUT)
     return output
 end
