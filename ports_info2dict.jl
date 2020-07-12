@@ -71,7 +71,7 @@ end
 function nmap(server::String)
     originalSTDOUT = stdout;
     (outread, outwrite) = redirect_stdout()
-    run(`nmap $(server) -oX tmp_$(server).xml --top-ports 20`)
+    run(`nmap $(server) -oX tmp_$(server).xml --top-ports 20 --max-rtt-timeout 200ms`)
     output = nmapXML_2_dict("tmp_$(server).xml")
     rm("tmp_$(server).xml")
     redirect_stdout(originalSTDOUT)
