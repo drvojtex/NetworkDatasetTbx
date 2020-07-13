@@ -1,5 +1,13 @@
 # NetworkDatasetTbx
 
+Example of use:
+```julia
+julia> include("main.jl")
+julia> probe_server(Domain("fel.cvut.cz"))
+```
+Output as JSON file.
+
+
 ## ports_info2dict.jl
 Example of use ports_info2dict.jl. Domain name might be replaced by IP address. \
 e. g. nmap("cvut.cz")  ≡ nmap("147.32.3.202")  
