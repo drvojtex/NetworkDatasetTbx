@@ -41,6 +41,7 @@ function convert_dns2ip(server_name::String)
 end
 
 function isIPv4(address::String)
+    # Check if given string is an IPv4 address.
     str = split(address, ".")
     for s in str
         try
@@ -53,6 +54,7 @@ function isIPv4(address::String)
 end
 
 function isIPv6(address::String)
+    # Check if given string is an IPv6 address.
     str = split(address, ":")
     for s in str
         if length(s) > 4
