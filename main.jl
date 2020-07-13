@@ -10,12 +10,27 @@ struct thread_node
 	neighbours::Dict
 end
 
-
-main_dict=Dict()
-
+main_dict = Dict()
 
 function probe_server(root_server::Domain)
 	root_dict = threatcrowd_dict(root_server)
+	probe_root(root_dict)
+	out = thread_node(convert_dns2ip(root_server.s), root_server.s, nmap(convert_dns2ip(root_server.s)), main_dict)
+	open("$(root_server.s).json", "w") do f
+		JSON.print(f, out, 4)
+	end
+end
+
+function probe_server(root_server::Ip)
+	root_dict = threatcrowd_dict(root_server)
+	probe_root(root_dict)
+	out = thread_node("", root_server.s, nmap(root_server.s), main_dict)
+	open("$(root_server.s).json", "w") do f
+		JSON.print(f, out, 4)
+	end
+end
+
+function probe_root(root_dict::Dict)
 	for ip_address in root_dict["resolutions"]
 		ip_address = ip_address["ip_address"]
 		@show ip_address
@@ -38,7 +53,6 @@ function probe_server(root_server::Domain)
 		main_dict[key] = thread_node(key, subdomain, nmap(key), Dict())
 	end
 end
-
 
 #network = Dict("123.2"=> thread_node("123.2", "asd.com", Dict(12=>"open", 24=>"closed"), Dict("343.2"=> thread_node("343.2", "qwe.com", Dict(24=>"open"), Dict()), "311.2" => thread_node("311.2", "tze.com", Dict(14=>"open", 98=>"closed"), Dict()) )))
 #JSON.print(stdout, network, 4)
