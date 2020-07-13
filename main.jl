@@ -1,8 +1,11 @@
-
+# includes:
 include("dns2ip.jl")
 include("ports_info2dict.jl")
 include("threatcrowd2dict.jl")
 
+##############################################################
+
+# Node of information about each domain.
 struct thread_node
 	ip::String
 	dns::String
@@ -10,8 +13,12 @@ struct thread_node
 	neighbours::Dict
 end
 
+# Dictionary of neighbours of root server.
 main_dict = Dict()
 
+##############################################################
+
+# Main function to start probe and create json file.
 function probe_server(root_server::Domain)
 	root_dict = threatcrowd_dict(root_server)
 	probe_root(root_dict)
@@ -29,6 +36,10 @@ function probe_server(root_server::Ip)
 		JSON.print(f, out, 4)
 	end
 end
+
+##############################################################
+
+# Probe neigbours of root.
 
 function probe_root(root_dict::Dict)
 	for ip_address in root_dict["resolutions"]
@@ -53,6 +64,3 @@ function probe_root(root_dict::Dict)
 		main_dict[key] = thread_node(key, subdomain, nmap(key), Dict())
 	end
 end
-
-#network = Dict("123.2"=> thread_node("123.2", "asd.com", Dict(12=>"open", 24=>"closed"), Dict("343.2"=> thread_node("343.2", "qwe.com", Dict(24=>"open"), Dict()), "311.2" => thread_node("311.2", "tze.com", Dict(14=>"open", 98=>"closed"), Dict()) )))
-#JSON.print(stdout, network, 4)
