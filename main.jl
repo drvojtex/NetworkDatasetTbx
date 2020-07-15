@@ -1,3 +1,6 @@
+
+using DataStructures
+
 # includes:
 include("dns2ip.jl")
 include("ports_info2dict.jl")
@@ -6,61 +9,115 @@ include("threatcrowd2dict.jl")
 ##############################################################
 
 # Node of information about each domain.
-struct thread_node
+mutable struct thread_node
 	ip::String
 	dns::String
 	ports::Dict
-	neighbours::Dict
+	neighbours::Array
 end
 
 # Dictionary of neighbours of root server.
 main_dict = Dict()
+# Stack of unexplored servers.
+main_stack = Stack{Array}()
+main_visited_vertexes = []
 
 ##############################################################
 
-# Main function to start probe and create json file.
-function probe_server(root_server::Domain)
-	root_dict = threatcrowd_dict(root_server)
-	probe_root(root_dict)
-	out = thread_node(convert_dns2ip(root_server.s), root_server.s, nmap(convert_dns2ip(root_server.s)), main_dict)
-	open("$(root_server.s).json", "w") do f
-		JSON.print(f, out, 4)
+function database(root_server::Domain)
+    global main_dict
+
+    # probe root
+    root_dict = threatcrowd_dict(root_server)
+    tmp_neighbours = extract_neighbours(root_dict)
+    tmp_node = thread_node(convert_dns2ip(root_server.s), root_server.s, nmap(root_server.s), tmp_neighbours)
+    main_dict[root_server.s] = tmp_node
+    append!(main_visited_vertexes, [root_server])
+    # probe neighbours of root server
+    while !isempty(main_stack)
+        @show main_stack
+        vertex = pop!(main_stack)[1]
+        vertex_dict = threatcrowd_dict(vertex)
+        tmp_neighbours = extract_neighbours(vertex_dict)
+        if typeof(vertex) == Domain
+            tmp_node = thread_node(convert_dns2ip(vertex.s), vertex.s, nmap(vertex.s), tmp_neighbours)
+        elseif typeof(vertex) == Ip
+            tmp_node = thread_node(vertex.s, "", nmap(vertex.s), tmp_neighbours)
+        elseif typeof(vertex) == Mail
+            tmp_node = thread_node("", vertex.s, Dict(), tmp_neighbours)
+        end
+        main_dict[vertex.s] = tmp_node
+    end
+
+    # store to json file
+    open("$(root_server.s).json", "w") do f
+		JSON.print(f, main_dict, 4)
 	end
 end
 
-function probe_server(root_server::Ip)
-	root_dict = threatcrowd_dict(root_server)
-	probe_root(root_dict)
-	out = thread_node("", root_server.s, nmap(root_server.s), main_dict)
-	open("$(root_server.s).json", "w") do f
-		JSON.print(f, out, 4)
-	end
-end
-
-##############################################################
-
-# Probe neigbours of root.
-
-function probe_root(root_dict::Dict)
-	for ip_address in root_dict["resolutions"]
-		ip_address = ip_address["ip_address"]
-		@show ip_address
-		if ip_address != "-"
-			main_dict[ip_address] = thread_node(ip_address, "", nmap(ip_address), Dict())
-		end
-	end
-	for email in root_dict["emails"]
-		if length(email) > 0
-			main_dict[email] = threatcrowd_dict(Mail(email))["domains"]
-		end
-	end
-	for subdomain in root_dict["subdomains"]
-		tmp = convert_dns2ip(subdomain)
-		key = subdomain
-		if tmp != ""
-			key = tmp
-		end
-		@show subdomain
-		main_dict[key] = thread_node(key, subdomain, nmap(key), Dict())
-	end
+function extract_neighbours(tcMessage::Dict)
+    global main_stack
+    global main_visited_vertexes
+    neighbours_arr = []
+    if haskey(tcMessage, "resolutions")
+        res_dict = tcMessage["resolutions"]
+        for neighbour in res_dict
+            if haskey(neighbour, "ip_address")
+                ip_address = Ip(neighbour["ip_address"])
+                if ip_address.s != "-"
+                    append!(neighbours_arr, [ip_address])
+                    if !(ip_address in main_visited_vertexes)
+                        push!(main_stack, [ip_address])
+                        append!(main_visited_vertexes, [ip_address])
+                    end
+                end
+            end
+            if haskey(neighbour, "domain")
+                domain = Domain(neighbour["domain"])
+                append!(neighbours_arr, [domain])
+                if !(domain in main_visited_vertexes)
+                    push!(main_stack, [domain])
+                    append!(main_visited_vertexes, [domain])
+                end
+            end
+        end
+    end
+    if haskey(tcMessage, "emails")
+        emails = tcMessage["emails"]
+        for email in emails
+            email = Mail(email)
+            if length(email.s) > 0
+                append!(neighbours_arr, [email])
+                if !(email in main_visited_vertexes)
+                    push!(main_stack, [email])
+                    append!(main_visited_vertexes, [email])
+                end
+            end
+        end
+    end
+    if haskey(tcMessage, "subdomains")
+        subdomains = tcMessage["subdomains"]
+        for subdomain in subdomains
+            if length(subdomain) > 0
+                subdomain = Domain(subdomain)
+                append!(neighbours_arr, [subdomain])
+                if !(subdomain in main_visited_vertexes)
+                    push!(main_stack, [subdomain])
+                    append!(main_visited_vertexes, [subdomain])
+                end
+            end
+        end
+    end
+    if haskey(tcMessage, "domains")
+        domains = tcMessage["domains"]
+        for domain in domains
+            domain = Domain(domain)
+            append!(neighbours_arr, [domain])
+            if !(domain in main_visited_vertexes)
+                push!(main_stack, [domain])
+                append!(main_visited_vertexes, [domain])
+            end
+        end
+    end
+    return neighbours_arr
 end
