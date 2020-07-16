@@ -5,6 +5,7 @@ using DataStructures
 include("dns2ip.jl")
 include("ports_info2dict.jl")
 include("threatcrowd2dict.jl")
+include("location2dict.jl")
 
 ##############################################################
 
@@ -13,13 +14,15 @@ mutable struct thread_node
 	ip::String
 	dns::String
 	ports::Dict
-	neighbours::Array
+    neighbours::Array
+    location::Dict
 end
 
 # Dictionary of neighbours of root server.
 main_dict = Dict()
 # Stack of unexplored servers.
 main_stack = Stack{Array}()
+# Array of visited vertexes.
 main_visited_vertexes = []
 
 ##############################################################
@@ -30,7 +33,8 @@ function database(root_server::Domain)
     # probe root
     root_dict = threatcrowd_dict(root_server)
     tmp_neighbours = extract_neighbours(root_dict)
-    tmp_node = thread_node(convert_dns2ip(root_server.s), root_server.s, nmap(root_server.s), tmp_neighbours)
+    root_ip = convert_dns2ip(root_server.s)
+    tmp_node = thread_node(root_ip, root_server.s, nmap(root_server.s), tmp_neighbours, location(Ip(root_ip)))
     main_dict[root_server.s] = tmp_node
     append!(main_visited_vertexes, [root_server])
     # probe neighbours of root server
@@ -40,11 +44,12 @@ function database(root_server::Domain)
         vertex_dict = threatcrowd_dict(vertex)
         tmp_neighbours = extract_neighbours(vertex_dict)
         if typeof(vertex) == Domain
-            tmp_node = thread_node(convert_dns2ip(vertex.s), vertex.s, nmap(vertex.s), tmp_neighbours)
+            vertex_ip = convert_dns2ip(vertex.s)
+            tmp_node = thread_node(vertex_ip, vertex.s, nmap(vertex.s), tmp_neighbours, location(Ip(vertex_ip)))
         elseif typeof(vertex) == Ip
-            tmp_node = thread_node(vertex.s, "", nmap(vertex.s), tmp_neighbours)
+            tmp_node = thread_node(vertex.s, "", nmap(vertex.s), tmp_neighbours, location(Ip(vertex.s)))
         elseif typeof(vertex) == Mail
-            tmp_node = thread_node("", vertex.s, Dict(), tmp_neighbours)
+            tmp_node = thread_node("", vertex.s, Dict(), tmp_neighbours, Dict())
         end
         main_dict[vertex.s] = tmp_node
     end
