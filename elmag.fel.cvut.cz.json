@@ -1,0 +1,728 @@
+{
+    "elmag.org": {
+        "ip": "147.32.223.51",
+        "dns": "elmag.org",
+        "ports": {
+            "445": {
+                "port_id": 445,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "microsoft-ds"
+            },
+            "80": {
+                "port_id": 80,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "http"
+            },
+            "3389": {
+                "port_id": 3389,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ms-wbt-server"
+            },
+            "143": {
+                "port_id": 143,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imap"
+            },
+            "1723": {
+                "port_id": 1723,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "pptp"
+            },
+            "5900": {
+                "port_id": 5900,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "vnc"
+            },
+            "21": {
+                "port_id": 21,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ftp"
+            },
+            "25": {
+                "port_id": 25,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "smtp"
+            },
+            "135": {
+                "port_id": 135,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "msrpc"
+            },
+            "443": {
+                "port_id": 443,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "https"
+            },
+            "22": {
+                "port_id": 22,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ssh"
+            },
+            "8080": {
+                "port_id": 8080,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "http-proxy"
+            },
+            "53": {
+                "port_id": 53,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "domain"
+            },
+            "993": {
+                "port_id": 993,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imaps"
+            },
+            "995": {
+                "port_id": 995,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3s"
+            },
+            "110": {
+                "port_id": 110,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3"
+            },
+            "139": {
+                "port_id": 139,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "netbios-ssn"
+            },
+            "111": {
+                "port_id": 111,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "rpcbind"
+            },
+            "23": {
+                "port_id": 23,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "telnet"
+            },
+            "3306": {
+                "port_id": 3306,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "mysql"
+            }
+        },
+        "neighbours": [
+            {
+                "s": "147.32.200.193"
+            },
+            {
+                "s": "147.32.223.51"
+            },
+            {
+                "s": "skvor@fel.cvut.cz"
+            }
+        ],
+        "location": {
+            "city": "Prague",
+            "loc": "50.0880,14.4208",
+            "region": "Hlavní město Praha",
+            "org": "AS2852 CESNET z.s.p.o.",
+            "timezone": "Europe/Prague",
+            "country": "CZ"
+        }
+    },
+    "skvor@fel.cvut.cz": {
+        "ip": "",
+        "dns": "skvor@fel.cvut.cz",
+        "ports": {},
+        "neighbours": [
+            {
+                "s": "elmag.org"
+            }
+        ],
+        "location": {}
+    },
+    "elmag.fel.cvut.cz": {
+        "ip": "147.32.223.51",
+        "dns": "elmag.fel.cvut.cz",
+        "ports": {
+            "445": {
+                "port_id": 445,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "microsoft-ds"
+            },
+            "80": {
+                "port_id": 80,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "http"
+            },
+            "3389": {
+                "port_id": 3389,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ms-wbt-server"
+            },
+            "143": {
+                "port_id": 143,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imap"
+            },
+            "1723": {
+                "port_id": 1723,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "pptp"
+            },
+            "5900": {
+                "port_id": 5900,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "vnc"
+            },
+            "21": {
+                "port_id": 21,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ftp"
+            },
+            "25": {
+                "port_id": 25,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "smtp"
+            },
+            "135": {
+                "port_id": 135,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "msrpc"
+            },
+            "443": {
+                "port_id": 443,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "https"
+            },
+            "22": {
+                "port_id": 22,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ssh"
+            },
+            "8080": {
+                "port_id": 8080,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "http-proxy"
+            },
+            "53": {
+                "port_id": 53,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "domain"
+            },
+            "993": {
+                "port_id": 993,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imaps"
+            },
+            "995": {
+                "port_id": 995,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3s"
+            },
+            "110": {
+                "port_id": 110,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3"
+            },
+            "139": {
+                "port_id": 139,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "netbios-ssn"
+            },
+            "111": {
+                "port_id": 111,
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "rpcbind"
+            },
+            "23": {
+                "port_id": 23,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "telnet"
+            },
+            "3306": {
+                "port_id": 3306,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "mysql"
+            }
+        },
+        "neighbours": [
+            {
+                "s": "147.32.200.193"
+            },
+            {
+                "s": "147.32.223.51"
+            }
+        ],
+        "location": {
+            "city": "Prague",
+            "loc": "50.0880,14.4208",
+            "region": "Hlavní město Praha",
+            "org": "AS2852 CESNET z.s.p.o.",
+            "timezone": "Europe/Prague",
+            "country": "CZ"
+        }
+    },
+    "147.32.200.193": {
+        "ip": "147.32.200.193",
+        "dns": "",
+        "ports": {
+            "445": {
+                "port_id": 445,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "microsoft-ds"
+            },
+            "80": {
+                "port_id": 80,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "http"
+            },
+            "3389": {
+                "port_id": 3389,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ms-wbt-server"
+            },
+            "143": {
+                "port_id": 143,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imap"
+            },
+            "1723": {
+                "port_id": 1723,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "pptp"
+            },
+            "5900": {
+                "port_id": 5900,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "vnc"
+            },
+            "21": {
+                "port_id": 21,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ftp"
+            },
+            "25": {
+                "port_id": 25,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "smtp"
+            },
+            "135": {
+                "port_id": 135,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "msrpc"
+            },
+            "443": {
+                "port_id": 443,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "https"
+            },
+            "22": {
+                "port_id": 22,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ssh"
+            },
+            "8080": {
+                "port_id": 8080,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "http-proxy"
+            },
+            "53": {
+                "port_id": 53,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "domain"
+            },
+            "993": {
+                "port_id": 993,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imaps"
+            },
+            "995": {
+                "port_id": 995,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3s"
+            },
+            "110": {
+                "port_id": 110,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3"
+            },
+            "139": {
+                "port_id": 139,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "netbios-ssn"
+            },
+            "111": {
+                "port_id": 111,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "rpcbind"
+            },
+            "23": {
+                "port_id": 23,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "telnet"
+            },
+            "3306": {
+                "port_id": 3306,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "mysql"
+            }
+        },
+        "neighbours": [
+            {
+                "s": "elmag.fel.cvut.cz"
+            },
+            {
+                "s": "elmag.org"
+            },
+            {
+                "s": "argos.feld.cvut.cz"
+            }
+        ],
+        "location": {
+            "city": "Prague",
+            "hostname": "argos.feld.cvut.cz",
+            "loc": "50.0880,14.4208",
+            "region": "Hlavní město Praha",
+            "org": "AS2852 CESNET z.s.p.o.",
+            "timezone": "Europe/Prague",
+            "country": "CZ"
+        }
+    },
+    "147.32.223.51": {
+        "ip": "147.32.223.51",
+        "dns": "",
+        "ports": {
+            "445": {
+                "port_id": 445,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "microsoft-ds"
+            },
+            "80": {
+                "port_id": 80,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "http"
+            },
+            "3389": {
+                "port_id": 3389,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ms-wbt-server"
+            },
+            "143": {
+                "port_id": 143,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imap"
+            },
+            "1723": {
+                "port_id": 1723,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "pptp"
+            },
+            "5900": {
+                "port_id": 5900,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "vnc"
+            },
+            "21": {
+                "port_id": 21,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ftp"
+            },
+            "25": {
+                "port_id": 25,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "smtp"
+            },
+            "135": {
+                "port_id": 135,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "msrpc"
+            },
+            "443": {
+                "port_id": 443,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "https"
+            },
+            "22": {
+                "port_id": 22,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ssh"
+            },
+            "8080": {
+                "port_id": 8080,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "http-proxy"
+            },
+            "53": {
+                "port_id": 53,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "domain"
+            },
+            "993": {
+                "port_id": 993,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imaps"
+            },
+            "995": {
+                "port_id": 995,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3s"
+            },
+            "110": {
+                "port_id": 110,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3"
+            },
+            "139": {
+                "port_id": 139,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "netbios-ssn"
+            },
+            "111": {
+                "port_id": 111,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "rpcbind"
+            },
+            "23": {
+                "port_id": 23,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "telnet"
+            },
+            "3306": {
+                "port_id": 3306,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "mysql"
+            }
+        },
+        "neighbours": [
+            {
+                "s": "elmag.org"
+            },
+            {
+                "s": "elmag.fel.cvut.cz"
+            }
+        ],
+        "location": {
+            "city": "Prague",
+            "loc": "50.0880,14.4208",
+            "region": "Hlavní město Praha",
+            "org": "AS2852 CESNET z.s.p.o.",
+            "timezone": "Europe/Prague",
+            "country": "CZ"
+        }
+    },
+    "argos.feld.cvut.cz": {
+        "ip": "147.32.200.193",
+        "dns": "argos.feld.cvut.cz",
+        "ports": {
+            "445": {
+                "port_id": 445,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "microsoft-ds"
+            },
+            "80": {
+                "port_id": 80,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "http"
+            },
+            "3389": {
+                "port_id": 3389,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "ms-wbt-server"
+            },
+            "143": {
+                "port_id": 143,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imap"
+            },
+            "1723": {
+                "port_id": 1723,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "pptp"
+            },
+            "5900": {
+                "port_id": 5900,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "vnc"
+            },
+            "21": {
+                "port_id": 21,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ftp"
+            },
+            "25": {
+                "port_id": 25,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "smtp"
+            },
+            "135": {
+                "port_id": 135,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "msrpc"
+            },
+            "443": {
+                "port_id": 443,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "https"
+            },
+            "22": {
+                "port_id": 22,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "ssh"
+            },
+            "8080": {
+                "port_id": 8080,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "http-proxy"
+            },
+            "53": {
+                "port_id": 53,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "domain"
+            },
+            "993": {
+                "port_id": 993,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "imaps"
+            },
+            "995": {
+                "port_id": 995,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3s"
+            },
+            "110": {
+                "port_id": 110,
+                "protocol": "tcp",
+                "state": "open",
+                "service": "pop3"
+            },
+            "139": {
+                "port_id": 139,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "netbios-ssn"
+            },
+            "111": {
+                "port_id": 111,
+                "protocol": "tcp",
+                "state": "filtered",
+                "service": "rpcbind"
+            },
+            "23": {
+                "port_id": 23,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "telnet"
+            },
+            "3306": {
+                "port_id": 3306,
+                "protocol": "tcp",
+                "state": "closed",
+                "service": "mysql"
+            }
+        },
+        "neighbours": [
+            {
+                "s": "147.32.200.193"
+            }
+        ],
+        "location": {
+            "city": "Prague",
+            "hostname": "argos.feld.cvut.cz",
+            "loc": "50.0880,14.4208",
+            "region": "Hlavní město Praha",
+            "org": "AS2852 CESNET z.s.p.o.",
+            "timezone": "Europe/Prague",
+            "country": "CZ"
+        }
+    }
+}
