@@ -108,7 +108,7 @@
             "111": {
                 "port_id": 111,
                 "protocol": "tcp",
-                "state": "closed",
+                "state": "filtered",
                 "service": "rpcbind"
             },
             "23": {
@@ -142,7 +142,8 @@
             "org": "AS2852 CESNET z.s.p.o.",
             "timezone": "Europe/Prague",
             "country": "CZ"
-        }
+        },
+        "depth": 2
     },
     "skvor@fel.cvut.cz": {
         "ip": "",
@@ -153,7 +154,8 @@
                 "s": "elmag.org"
             }
         ],
-        "location": {}
+        "location": {},
+        "depth": 3
     },
     "elmag.fel.cvut.cz": {
         "ip": "147.32.223.51",
@@ -295,7 +297,8 @@
             "org": "AS2852 CESNET z.s.p.o.",
             "timezone": "Europe/Prague",
             "country": "CZ"
-        }
+        },
+        "depth": 0
     },
     "147.32.200.193": {
         "ip": "147.32.200.193",
@@ -406,7 +409,7 @@
             "111": {
                 "port_id": 111,
                 "protocol": "tcp",
-                "state": "closed",
+                "state": "filtered",
                 "service": "rpcbind"
             },
             "23": {
@@ -441,7 +444,8 @@
             "org": "AS2852 CESNET z.s.p.o.",
             "timezone": "Europe/Prague",
             "country": "CZ"
-        }
+        },
+        "depth": 1
     },
     "147.32.223.51": {
         "ip": "147.32.223.51",
@@ -583,7 +587,8 @@
             "org": "AS2852 CESNET z.s.p.o.",
             "timezone": "Europe/Prague",
             "country": "CZ"
-        }
+        },
+        "depth": 1
     },
     "argos.feld.cvut.cz": {
         "ip": "147.32.200.193",
@@ -723,6 +728,7 @@
             "org": "AS2852 CESNET z.s.p.o.",
             "timezone": "Europe/Prague",
             "country": "CZ"
-        }
+        },
+        "depth": 2
     }
 }
