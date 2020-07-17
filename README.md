@@ -3,7 +3,7 @@
 Example of use:
 ```julia
 julia> include("main.jl")
-julia> probe_server(Domain("fel.cvut.cz"))
+julia> probe_server(Domain("elmag.fel.cvut.cz"))
 ```
 Output as JSON file.
 
