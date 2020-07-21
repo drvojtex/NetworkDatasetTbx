@@ -10,7 +10,7 @@ Process(`open graph.pdf`, ProcessExited(0))
 ```
 Output as JSON (database) and PDF (graph) files.
 
-<img src="./graph.pdf">
+<img src="./graph.svg">
 
 
 ## ports_info2dict.jl
