@@ -16,7 +16,9 @@ function convert_dns2ip(server_name::String)
     """
     originalSTDOUT = stdout;
     (outread, outwrite) = redirect_stdout()
-    run(`dig $(server_name) +short`)
+    if server_name[1] != '-'
+        run(`dig $(server_name) +short`)
+    end
     println("X")
     output = "X"
     while isIPv4(output) != true || isIPv6(output) != true || output != ""
