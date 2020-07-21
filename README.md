@@ -10,8 +10,6 @@ Process(`open graph.pdf`, ProcessExited(0))
 ```
 Output as JSON (database) and PDF (graph) files.
 
-
-![Alt text](./graph.pdf)
 <img src="./graph.pdf">
 
 
