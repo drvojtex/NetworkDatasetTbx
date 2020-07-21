@@ -11,12 +11,8 @@ Process(`open graph.pdf`, ProcessExited(0))
 Output as JSON (database) and PDF (graph) files.
 
 
-<img
-src=“kozvojtex/NetworkDatasetTbx/blob/master/graph.pdf”
-raw=true
-alt=“Subject Pronouns”
-style=“margin-right: 10px;”
-/>
+![Alt text](./graph.pdf)
+<img src="./graph.pdf">
 
 
 ## ports_info2dict.jl
