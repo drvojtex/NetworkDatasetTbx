@@ -36,6 +36,10 @@ function nmapXML_2_dict(filename::String)
 
     # Read a document from a file and set a root.
     file = joinpath(dirname(@__FILE__), filename)
+
+    if filesize(file) == 0
+        return Dict()
+    end
     doc = root(readxml(file))
 
     # Extract data from xml file.
@@ -71,9 +75,12 @@ end
 function nmap(server::String)
     originalSTDOUT = stdout;
     (outread, outwrite) = redirect_stdout()
-    run(`nmap $(server) -oX tmp_$(server).xml --top-ports 20 --max-rtt-timeout 200ms`)
-    output = nmapXML_2_dict("tmp_$(server).xml")
-    rm("tmp_$(server).xml")
+    output = Dict()
+    if server[1] != '-'
+        run(`nmap $(server) -oX tmp_$(server).xml --top-ports 20 --max-rtt-timeout 200ms`)
+        output = nmapXML_2_dict("tmp_$(server).xml")
+        rm("tmp_$(server).xml")
+    end
     redirect_stdout(originalSTDOUT)
     return output
 end
