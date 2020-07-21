@@ -1,5 +1,7 @@
 # NetworkDatasetTbx
 
+Network dataset toolbox is about creating a database of network tree and its visualization. Database is in relational form and is stored into JSON format. Names of servers (e.g. domain, ip address, email address, hash) are keys in database. Each server has these attributes: ip address, dns address, ports info (port_id, protocol, state, service), neighbours, location (city, hostname, location - coordinates, rigion (parent city), provider organization, timezone, country), depth (distance from root server). 
+
 Example of use:
 ```julia
 julia> include("main.jl")  # Load toolbox.
