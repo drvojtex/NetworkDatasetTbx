@@ -45,3 +45,21 @@ julia> include("dns2ip.jl")
 julia> convert_dns2ip("cvut.cz")
 "147.32.3.202"
 ```
+
+## location2dict.jl
+Returns dictionary with information about IP (city, hostname, location - coordinates, rigion (parent city), provider organization, timezone, country). 
+Example:
+location(Ip("147.32.3.202"))
+
+```julia
+julia> include("location2dict.jl")
+julia> location(Ip("147.32.3.202"))
+Dict{String,Any} with 7 entries:
+  "city"     => "Prague"
+  "hostname" => "webmm-pub.is.cvut.cz"
+  "loc"      => "50.0880,14.4208"
+  "region"   => "Hlavní město Praha"
+  "org"      => "AS2852 CESNET z.s.p.o."
+  "timezone" => "Europe/Prague"
+  "country"  => "CZ"
+```
