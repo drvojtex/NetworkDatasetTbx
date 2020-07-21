@@ -63,3 +63,27 @@ Dict{String,Any} with 7 entries:
   "timezone" => "Europe/Prague"
   "country"  => "CZ"
 ```
+
+## threatcrowd2dict.jl
+Probe given server.
+threatcrowd_dict(hash::Hash)
+threatcrowd_dict(email::Mail)
+threatcrowd_dict(ip_address::Ip)
+threatcrowd_dict(domain_name::Domain)
+
+Example:
+threatcrowd_dict(Domain("fel.cvut.cz"))
+
+```julia
+julia> include("threatcrowd2dict.jl")
+julia> threatcrowd_dict(Domain("fel.cvut.cz"))
+Dict{String,Any} with 8 entries:
+  "resolutions"   => Any[Dict{String,Any}("ip_address"=>"-","last_resolved"=>"0000-00-00"), Dict{String,Any}("ip_address"=>"147.32.192.12","last_resolved"=…
+  "emails"        => Any[""]
+  "subdomains"    => Any["informatika.fel.cvut.cz", "fyzika.fel.cvut.cz", "gitlab.fel.cvut.cz", "aic.fel.cvut.cz", "dce.fel.cvut.cz", "aa4cc.dce.fel.cvut.c…
+  "references"    => Any[]
+  "hashes"        => Any[]
+  "votes"         => 0
+  "response_code" => "1"
+  "permalink"     => "https://www.threatcrowd.org/domain.php?domain=fel.cvut.cz"
+```
