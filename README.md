@@ -2,10 +2,13 @@
 
 Example of use:
 ```julia
-julia> include("main.jl")
-julia> probe_server(Domain("elmag.fel.cvut.cz"))
+julia> include("main.jl")  # Load toolbox.
+julia> database(Domain("elmag.fel.cvut.cz"))  # Create database.
+julia> load_arrange_JSON("elmag.fel.cvut.cz.json")
+julia> create_graph("graph")
+Process(`open graph.pdf`, ProcessExited(0))
 ```
-Output as JSON file.
+Output as JSON (database) and PDF (graph) files.
 
 
 ## ports_info2dict.jl
