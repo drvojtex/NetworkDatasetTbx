@@ -1,23 +1,22 @@
 
 using JSON
 
-info_dict = Dict()
-
-function ipinfo2dict(server::String)
-    open("tmp_$(server).json", "r") do f
-        global info_dict
-        dicttxt = read(f, String)
-        info_dict = JSON.parse(dicttxt)
-    end
-    delete!(info_dict, "postal")
-    delete!(info_dict, "ip")
-    delete!(info_dict, "readme")
-end
-
 function location(server::Ip)
     server = server.s
-    run(`curl https://ipinfo.io/$(server) -o tmp_$(server).json -s`)
-    ipinfo2dict(server)
-    rm("tmp_$(server).json")
+    r = nothing
+    try
+        p=pipeline(`whois $(server) > $(server).txt`, `grep 'netname\|descr\|country'`)
+        r=split(replace(read(p, String), " "=>""), "\n")
+    catch ex
+        return Dict()
+    end
+    info_dict = Dict("netname"=>[], "descr"=>[], "country"=>[])
+    for a in r
+        if a != ""
+            key = split(a, ":")[1]
+            val = split(a, ":")[2]
+            append!(info_dict[key], [val])
+        end
+    end
     return info_dict
 end
